@@ -104,7 +104,8 @@ void acceptOrder(vector <MenuItem> &m)
 {
   char option = '\0'; //for the user selected item-Menus
   double subtotal = 0.0;
-  do {
+  do
+  {
     cout << "Please choose an item (x to exit): ";
     cin >> option;
 
@@ -136,14 +137,20 @@ void acceptOrder(vector <MenuItem> &m)
         }
         else
         {
-          cout << "Count must be > 0\n"<< endl;
+          cout << "Count must be greater than 0\n"<< endl;
+        }
+      }
+      //handle invalid input, that is item not in the menu
+      else if(option != m[i].addLetter && option !=m[i].removeLetter && option !='x'&& option  !='X' )
+      {
+        if(i==0) //only test for 1 time 
+        {
+          cout << "Item not in the Menu. Please enter an item from the Menu" << endl;
         }
       }
     }
   } while(option != 'x' && option != 'X');
   cout << "Thank you for placing your order.\n";
-
-
 }
 
 int main(int argc, char const *argv[])
